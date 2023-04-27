@@ -18,14 +18,14 @@
 
     <label>Enter name:</label>
 
-    <input name="name" class="nameString" cols="30" rows="10" placeholder="Enter your name"></input>
+    <input type="text" name="name" class="nameString" placeholder="Enter your name">
 
     <button class="greetMeBtn">Say hello</button>
 
     <button class="clearBtn">clear</button>
 
     <!-- display hello + `name` -->
-    <div class="displayGreet">Hello,</div>
+    <div>Hello, <input type="text" class="displayGreet" placeholder="Enter your name"></div>
 
     <script src="greet.js"></script>
     <script src="greetDOM.js"></script>
