@@ -1,7 +1,7 @@
 const nameElementRef = document.querySelector('.nameString');
 const greetBtnRef = document.querySelector('.greetMeBtn');
 const clearBtnRef = document.querySelector('.clearBtn');
-const greetingRef = document.querySelector('.displayGreet');
+const greetingRef = document.querySelector('p');
 
 let instaOfGreetFactory = greetFactory();
 
