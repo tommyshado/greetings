@@ -10,4 +10,6 @@ greetBtnRef.addEventListener('click', () => {
     greetingRef.value = instaOfGreetFactory.logsName();
 });
 
-clearBtnRef.addEventListener('click', () => {});
+clearBtnRef.addEventListener('click', () => {
+    nameElementRef.value = '';
+});
