@@ -3,5 +3,11 @@ const greetBtnRef = document.querySelector('.greetMeBtn');
 const clearBtnRef = document.querySelector('.clearBtn');
 const greetingRef = document.querySelector('.displayGreet');
 
-greetBtnRef.addEventListener('click', () => {});
+let instaOfGreetFactory = greetFactory();
+
+greetBtnRef.addEventListener('click', () => {
+    instaOfGreetFactory.getName(nameElementRef.value);
+    greetingRef.value = instaOfGreetFactory.logsName();
+});
+
 clearBtnRef.addEventListener('click', () => {});
