@@ -8,8 +8,5 @@ let instaOfGreetFactory = greetFactory();
 greetBtnRef.addEventListener('click', () => {
     instaOfGreetFactory.getName(nameElementRef.value);
     greetingRef.innerHTML = `${greetingRef.innerHTML} ${instaOfGreetFactory.logsName()}`;
-});
-
-clearBtnRef.addEventListener('click', () => {
     nameElementRef.value = '';
 });
