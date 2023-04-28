@@ -4,3 +4,4 @@ const clearBtnRef = document.querySelector('.clearBtn');
 const greetingRef = document.querySelector('.displayGreet');
 
 greetBtnRef.addEventListener('click', () => {});
+clearBtnRef.addEventListener('click', () => {});
