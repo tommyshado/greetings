@@ -1,5 +1,6 @@
 const greetFactory = () => {
     let nameString = '';
+    let counter;
 
     const getName = function(name) {
         if(typeof name === 'string') {
@@ -10,5 +11,18 @@ const greetFactory = () => {
     const logsName = function() {
         return nameString;
     }
-    return { getName, logsName };
+
+    let greetingsCounter = function() {
+        if (logsName() === 'Hello,') {
+            counter = 0;
+        } else {
+            counter++;
+        }
+    }
+
+    let logsCounter = function() {
+        console.log(counter);
+    }
+
+    return { getName, logsName, greetingsCounter, logsCounter };
 }
