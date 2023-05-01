@@ -2,7 +2,6 @@ const greetFactory = () => {
     const greetsObject = {};
 
     let nameString = '';
-    let namesArr = [];
     let counter = 0;
 
     const getName = function(name) {
@@ -15,13 +14,10 @@ const greetFactory = () => {
         return nameString;
     }
 
-    const appendsName = function() {
-        namesArr.push(logsName());
-    }
-
     let greetingsCounter = function() {
-        if(namesArr.includes(logsName())) {
+        while(logsName()) {
             counter++;
+            break;
         }
     }
 
@@ -49,7 +45,6 @@ const greetFactory = () => {
 
     return {
         getName,
-        appendsName,
         logsName,
         greetingsCounter,
         logsCounter,
