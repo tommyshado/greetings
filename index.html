@@ -13,27 +13,37 @@
 
 </head>
 <body>
+    <div class="container">
+        <h1>Greet Exercise</h1>
+        <div class="row">
+            <div class="col-6">
+                <label>Enter name:</label>
+            
+                <input type="text" name="name" class="nameString" placeholder="Enter your name">
+            
+                <button class="greetMeBtn">Say hello</button>
+            </div>
+            <div class="col-6">
+                <div class="greetings-counter">
+                    <p id="counter">0</p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="radio-buttons">
+                    <input type="radio">IsiXhosa</input>
+                    <input type="radio">IsiSutho</input>
+                    <input type="radio">English</input>
+                </div>
+            
+                <!-- display hello + `name` -->
+                <p id="greet">Hello,</p>
+            </div>
+
+        </div>
     
-    <h1>Greet Exercise</h1>
-
-    <label>Enter name:</label>
-
-    <input type="text" name="name" class="nameString" placeholder="Enter your name">
-
-    <button class="greetMeBtn">Say hello</button>
-
-    <div class="greetings-counter">
-        <p id="counter"></p>
+    
     </div>
-
-    <div class="radio-buttons">
-        <input type="radio">IsiXhosa</input>
-        <input type="radio">IsiSutho</input>
-        <input type="radio">English</input>
-    </div>
-
-    <!-- display hello + `name` -->
-    <p id="greet">Hello,</p>
 
     <script src="greet.js"></script>
     <script src="greetDOM.js"></script>
