@@ -1,6 +1,7 @@
 const nameElementRef = document.querySelector('.nameString');
 const greetBtnRef = document.querySelector('.greetMeBtn');
-const greetingRef = document.querySelector('p');
+const greetingRef = document.querySelector('#greet');
+const counterGreet = document.querySelector('#counter');
 
 let instaOfGreetFactory = greetFactory();
 
@@ -13,4 +14,9 @@ greetBtnRef.addEventListener('click', () => {
         greetingRef.innerHTML =  `Hello, ${instaOfGreetFactory.logsName()}`
         nameElementRef.value = '';
     }
+
+    instaOfGreetFactory.logsName();
+    instaOfGreetFactory.appendsName();
+    instaOfGreetFactory.greetingsCounter();
+    counterGreet.innerHTML = Number(counterGreet.innerHTML) + instaOfGreetFactory.logsCounter();
 });
