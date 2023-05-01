@@ -1,28 +1,31 @@
 const greetFactory = () => {
     let nameString = '';
-    let counter;
+    let namesArr = [];
+    let counter = 0;
 
     const getName = function(name) {
         if(typeof name === 'string') {
             nameString = `${(name.toLowerCase()).trim()}`;
         }
-    } 
+    }
 
     const logsName = function() {
         return nameString;
     }
 
+    const appendsName = function() {
+        namesArr.push(logsName());
+    }
+
     let greetingsCounter = function() {
-        if (logsName() === 'Hello,') {
-            counter = 0;
-        } else {
+        if(namesArr.includes(logsName())) {
             counter++;
         }
     }
 
     let logsCounter = function() {
-        console.log(counter);
+        return counter;
     }
 
-    return { getName, logsName, greetingsCounter, logsCounter };
+    return { getName, appendsName, logsName, greetingsCounter, logsCounter };
 }
