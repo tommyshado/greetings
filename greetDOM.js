@@ -4,15 +4,19 @@ const greetingRef = document.querySelector('#greet');
 const counterGreet = document.querySelector('#counter');
 const radioButtonRef = document.querySelector('.language');
 
-let instaOfGreetFactory = greetFactory();
 
 greetBtnRef.addEventListener('click', () => {
+    let instaOfGreetFactory = greetFactory();
+    
     instaOfGreetFactory.getName(nameElementRef.value);
-    if (greetingRef.innerHTML === 'Hello,') {
-        greetingRef.innerHTML = `${greetingRef.innerHTML} ${instaOfGreetFactory.logsName()}`;
+    instaOfGreetFactory.checkedRadioBtn(radioButtonRef);
+
+    if (greetingRef.innerHTML === '') {
+        greetingRef.innerHTML = `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`;
+        radioButtonRef.checked = false;
         nameElementRef.value = '';
-    } else {
-        greetingRef.innerHTML =  `Hello, ${instaOfGreetFactory.logsName()}`
+    } else if (greetingRef.innerHTML !== '') {
+        greetingRef.innerHTML =  `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`
         nameElementRef.value = '';
     }
 
