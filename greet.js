@@ -36,10 +36,10 @@ const greetFactory = () => {
     }
 
     const getGreeting = function() {
-        for (let languageValue in greetsObject) {
-            if (languageValue === 'IsiXhosa') {
+        for (let greetingKey in greetsObject) {
+            if (greetingKey === 'IsiXhosa') {
                 return "Molweni,";
-            } else if (languageValue === 'IsiSutho') {
+            } else if (greetingKey === 'IsiSutho') {
                 return 'Dumelang,'
             } else {
                 return 'Hello,'
