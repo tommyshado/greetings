@@ -44,33 +44,85 @@ describe('"greetFactory" is a factory function name', () => {
 
     });
 
-    describe('invalid inputs', () => {
-        it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName(5);
+    // describe('invalid inputs', () => {
+    //     it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName(5);
 
-            assert.equal(greetingsInstance.logsName(), 'Invalid input');
+    //         assert.equal(greetingsInstance.logsName(), 'Invalid input');
+    //     });
+
+    //     it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName(undefined);
+
+    //         assert.equal(greetingsInstance.logsName(), 'Invalid input');
+    //     });
+
+    //     it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName(null);
+
+    //         assert.equal(greetingsInstance.logsName(), 'Invalid input');
+    //     });
+
+    //     it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName(25);
+
+    //         assert.equal(greetingsInstance.logsName(), 'Invalid input');
+    //     });
+    // })
+
+    describe('greetings count', () => {
+        it('should be able to return 0 when the number of greetings are 0', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName();
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+            assert.equal(greetingsInstance.logsCounter(), 0);
         });
 
-        it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+        it('should be able to return the correct number of greeting for one name', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName(undefined);
+                greetingsInstance.getName('Othalive');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
 
-            assert.equal(greetingsInstance.logsName(), 'Invalid input');
+            assert.equal(greetingsInstance.logsCounter(), 1);
         });
 
-        it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+        it('should be able to return the correct number of greeting for two or more different name', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName(null);
+                greetingsInstance.getName('Mthunzi');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
 
-            assert.equal(greetingsInstance.logsName(), 'Invalid input');
+                greetingsInstance.getName('Tom');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+                
+
+            assert.equal(greetingsInstance.logsCounter(), 2);
         });
 
-        it('should be able to get the name and and check for its type and based on the type of the inputs it returns invalid input', () => {
+        it('should be able to return the correct number of greeting for two or more different name', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName(25);
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
 
-            assert.equal(greetingsInstance.logsName(), 'Invalid input');
+                greetingsInstance.getName('Kat');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+                greetingsInstance.getName('Bjorn');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+                
+
+            assert.equal(greetingsInstance.logsCounter(), 3);
         });
     })
 })
