@@ -16,7 +16,7 @@ greetBtnRef.addEventListener('click', () => {
         inputGreetRef.innerHTML = `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`;
         radioButtonRef.checked = false;
         nameElementRef.value = '';
-    } else if (greetingRef.innerHTML !== '') {
+    } else if (inputGreetRef.innerHTML !== '') {
         inputGreetRef.innerHTML =  `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`
         radioButtonRef.checked = false;
         nameElementRef.value = '';
