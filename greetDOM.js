@@ -10,7 +10,7 @@ greetBtnRef.addEventListener('click', () => {
 
     instaOfGreetFactory.getName(nameElementRef.value);
     instaOfGreetFactory.checkedRadioBtn(radioButtonRef.checked);
-    instaOfGreetFactory.radioBtnValue(radioButtonRef.value);
+    instaOfGreetFactory.getRadioValue(radioButtonRef.value);
 
     if (inputGreetRef.innerHTML === '') {
         inputGreetRef.innerHTML = `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`;
