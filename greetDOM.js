@@ -6,21 +6,18 @@ const radioButtonRef = document.querySelector('.language');
 
 
 greetBtnRef.addEventListener('click', () => {
+    const radioBtnReference = document.querySelector('input[name="lang"]:checked');
     let instaOfGreetFactory = greetFactory();
 
     instaOfGreetFactory.getName(nameElementRef.value);
-    instaOfGreetFactory.checkedRadioBtn(radioButtonRef.checked);
-    instaOfGreetFactory.getRadioValue(radioButtonRef.value);
 
-    if (inputGreetRef.innerHTML === '') {
-        inputGreetRef.innerHTML = `${instaOfGreetFactory.getGreeting()} ${instaOfGreetFactory.logsName()}`;
-        radioButtonRef.checked = false;
-        nameElementRef.value = '';
-    } else if (inputGreetRef.innerHTML !== '') {
-        inputGreetRef.innerHTML =  `${instaOfGreetFactory.getGreeting()} ${instaOfGreetFactory.logsName()}`
-        radioButtonRef.checked = false;
-        nameElementRef.value = '';
+    if (radioBtnReference) {
+        let radioValue = radioBtnReference.value;
+        instaOfGreetFactory.greet(radioValue);
     }
+    
+    inputGreetRef.innerHTML = instaOfGreetFactory.greetMsg();
+    nameElementRef.value = '';
 
     instaOfGreetFactory.logsName();
     instaOfGreetFactory.greetingsCounter();
