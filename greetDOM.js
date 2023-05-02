@@ -13,11 +13,11 @@ greetBtnRef.addEventListener('click', () => {
     instaOfGreetFactory.getRadioValue(radioButtonRef.value);
 
     if (inputGreetRef.innerHTML === '') {
-        inputGreetRef.innerHTML = `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`;
+        inputGreetRef.innerHTML = `${instaOfGreetFactory.getGreeting()} ${instaOfGreetFactory.logsName()}`;
         radioButtonRef.checked = false;
         nameElementRef.value = '';
     } else if (inputGreetRef.innerHTML !== '') {
-        inputGreetRef.innerHTML =  `${instaOfGreetFactory.greetingsLanguage()} ${instaOfGreetFactory.logsName()}`
+        inputGreetRef.innerHTML =  `${instaOfGreetFactory.getGreeting()} ${instaOfGreetFactory.logsName()}`
         radioButtonRef.checked = false;
         nameElementRef.value = '';
     }

@@ -35,7 +35,7 @@ const greetFactory = () => {
         return radioReference;
     }
 
-    const greetingsLanguage = function() {
+    const getGreeting = function() {
         for (let languageValue in greetsObject) {
             if (languageValue === 'IsiXhosa') {
                 return "Molweni,";
@@ -53,7 +53,7 @@ const greetFactory = () => {
         greetingsCounter,
         logsCounter,
         checkedRadioBtn,
-        greetingsLanguage,
+        getGreeting,
         getRadioValue
     };
 }
