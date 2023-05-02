@@ -31,7 +31,7 @@ const greetFactory = () => {
         }
     }
 
-    const radioBtnValue = function(radioReference) {
+    const getRadioValue = function(radioReference) {
         return radioReference;
     }
 
@@ -54,6 +54,6 @@ const greetFactory = () => {
         logsCounter,
         checkedRadioBtn,
         greetingsLanguage,
-        radioBtnValue
+        getRadioValue
     };
 }
