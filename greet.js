@@ -26,9 +26,13 @@ const greetFactory = () => {
     }
 
     const checkedRadioBtn = function(radioReference) {
-        if(radioReference.checked === true) {
-            greetsObject[radioReference.value] = undefined;
+        if(radioReference === true) {
+            greetsObject[radioBtnValue()] = undefined;
         }
+    }
+
+    const radioBtnValue = function(radioReference) {
+        return radioReference;
     }
 
     const greetingsLanguage = function() {
@@ -49,6 +53,7 @@ const greetFactory = () => {
         greetingsCounter,
         logsCounter,
         checkedRadioBtn,
-        greetingsLanguage
+        greetingsLanguage,
+        radioBtnValue
     };
 }
