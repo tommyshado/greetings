@@ -27,7 +27,7 @@ const greetFactory = () => {
 
     const checkedRadioBtn = function(radioReference) {
         if(radioReference === true) {
-            greetsObject[radioBtnValue()] = undefined;
+            greetsObject[getRadioValue()] = undefined;
         }
     }
 
