@@ -40,14 +40,14 @@ describe('"greetFactory" is a factory function name', () => {
     describe('greetings count the number of greetings', () => {
         it('should be able to count that 0 people have been greeted', () => {
             let greetingsInstance = greetFactory();
-            assert.equal(greetingsInstance.logsCounter(), 0);
+            assert.equal(greetingsInstance.greetCounter(), 0);
         });
 
         it('should be able to count that 1 people have been greeted', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('Othalive');
 
-            assert.equal(greetingsInstance.logsCounter(), 1);
+            assert.equal(greetingsInstance.greetCounter(), 1);
         });
 
         it('should be able to count that 2 people have been greeted', () => {
@@ -56,7 +56,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('Tom');
                 
 
-            assert.equal(greetingsInstance.logsCounter(), 2);
+            assert.equal(greetingsInstance.greetCounter(), 2);
         });
 
         it('should be able to count that 4 people have been greeted', () => {
@@ -66,7 +66,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('Bjorn');
                 greetingsInstance.getName('nico');
 
-            assert.equal(greetingsInstance.logsCounter(), 4);
+            assert.equal(greetingsInstance.greetCounter(), 4);
         });
 
         it('should be able to count that 3 people have been greeted', () => {
@@ -76,7 +76,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('John');
                 
 
-            assert.equal(greetingsInstance.logsCounter(), 3);
+            assert.equal(greetingsInstance.greetCounter(), 3);
         });
 
         it('should be able to count that 2 people have been greeted', () => {
@@ -84,7 +84,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('Malebo');
                 greetingsInstance.getName('Mbali');
 
-            assert.equal(2, greetingsInstance.logsCounter());
+            assert.equal(2, greetingsInstance.greetCounter());
         })
     })
 
@@ -94,7 +94,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('Malebo');
                 greetingsInstance.getName('Malebo');
 
-            assert.equal(greetingsInstance.logsCounter(), 1);
+            assert.equal(greetingsInstance.greetCounter(), 1);
         })
 
         it('should be able to identify when the names are the same and not count more than one', () => {
@@ -102,7 +102,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('anathi');
                 greetingsInstance.getName('anathi');
 
-            assert.equal(greetingsInstance.logsCounter(), 1);
+            assert.equal(greetingsInstance.greetCounter(), 1);
         })
 
         it('should be able to identify when the names are the same and not count more than one', () => {
@@ -110,7 +110,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('john');
                 greetingsInstance.getName('john');
 
-            assert.equal(greetingsInstance.logsCounter(), 1);
+            assert.equal(greetingsInstance.greetCounter(), 1);
         })
 
         it('should be able to identify when the names are the same and not count more than one', () => {
@@ -119,7 +119,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('malebo');
                 greetingsInstance.getName('bjorn');
 
-            assert.equal(greetingsInstance.logsCounter(), 2);
+            assert.equal(greetingsInstance.greetCounter(), 2);
         })
 
         it('should be able to identify when the names are the same and not count more than one', () => {
@@ -128,7 +128,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('nico');
                 greetingsInstance.getName('bjorn');
 
-            assert.equal(greetingsInstance.logsCounter(), 2);
+            assert.equal(greetingsInstance.greetCounter(), 2);
         })
         
     })
@@ -137,7 +137,7 @@ describe('"greetFactory" is a factory function name', () => {
         it('should be able to reset the counter variable when the counter is 1', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('Doe');
-                greetingsInstance.logsCounter();
+                greetingsInstance.greetCounter();
 
             assert.equal(greetingsInstance.resetCounter(), 0)
         })
@@ -145,7 +145,7 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('John');
                 greetingsInstance.getName('Redd');
-                greetingsInstance.logsCounter();
+                greetingsInstance.greetCounter();
 
             assert.equal(greetingsInstance.resetCounter(), 0);
         })
@@ -154,7 +154,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('Sammy');
                 greetingsInstance.getName('John');
                 greetingsInstance.getName('Redd');
-                greetingsInstance.logsCounter();
+                greetingsInstance.greetCounter();
 
             assert.equal(greetingsInstance.resetCounter(), 0);
         })
@@ -167,7 +167,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('Redd');
                 greetingsInstance.getName('Sammy');
                 greetingsInstance.getName('John');
-                greetingsInstance.logsCounter();
+                greetingsInstance.greetCounter();
 
             assert.equal(greetingsInstance.resetCounter(), 0)
         })

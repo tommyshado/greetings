@@ -14,7 +14,7 @@ const greetFactory = () => {
         return currentName;
     }
 
-    let logsCounter = function() {
+    let greetCounter = function() {
         return namesLst.length;
     }
 
@@ -41,7 +41,7 @@ const greetFactory = () => {
     return {
         getName,
         logsName,
-        logsCounter,
+        greetCounter,
         greet,
         greetMsg,
         resetCounter
