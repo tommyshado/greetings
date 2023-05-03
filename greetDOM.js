@@ -4,10 +4,10 @@ const inputGreetRef = document.querySelector('#greet');
 const counterGreet = document.querySelector('#counter');
 const radioButtonRef = document.querySelector('.language');
 
+const instaOfGreetFactory = greetFactory();
 
 greetBtnRef.addEventListener('click', () => {
     const radioBtnReference = document.querySelector('input[name="lang"]:checked');
-    let instaOfGreetFactory = greetFactory();
 
     instaOfGreetFactory.getName(nameElementRef.value);
 
@@ -20,6 +20,5 @@ greetBtnRef.addEventListener('click', () => {
     nameElementRef.value = '';
 
     instaOfGreetFactory.logsName();
-    instaOfGreetFactory.greetingsCounter();
-    counterGreet.innerHTML = Number(counterGreet.innerHTML) + instaOfGreetFactory.logsCounter();
+    counterGreet.innerHTML = instaOfGreetFactory.logsCounter();
 });
