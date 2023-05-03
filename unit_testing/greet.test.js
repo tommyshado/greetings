@@ -132,4 +132,44 @@ describe('"greetFactory" is a factory function name', () => {
         })
         
     })
+
+    describe('reset the counter to 0', () => {
+        it('should be able to reset the counter variable when the counter is 1', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Doe');
+                greetingsInstance.logsCounter();
+
+            assert.equal(greetingsInstance.resetCounter(), 0)
+        })
+        it('should be able to reset the counter variable when the counter is 2', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('John');
+                greetingsInstance.getName('Redd');
+                greetingsInstance.logsCounter();
+
+            assert.equal(greetingsInstance.resetCounter(), 0);
+        })
+        it('should be able to reset the counter variable when the counter is 3', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Sammy');
+                greetingsInstance.getName('John');
+                greetingsInstance.getName('Redd');
+                greetingsInstance.logsCounter();
+
+            assert.equal(greetingsInstance.resetCounter(), 0);
+        })
+        it('should be able to reset the counter variable when the counter is 4 or more', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Doe');
+                greetingsInstance.getName('bjorn');
+                greetingsInstance.getName('nico');
+                greetingsInstance.getName('bjorn');
+                greetingsInstance.getName('Redd');
+                greetingsInstance.getName('Sammy');
+                greetingsInstance.getName('John');
+                greetingsInstance.logsCounter();
+
+            assert.equal(greetingsInstance.resetCounter(), 0)
+        })
+    })
 })
