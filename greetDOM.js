@@ -25,5 +25,6 @@ greetBtnRef.addEventListener('click', () => {
 });
 
 resetBtn.addEventListener('click', () => {
+    radioButtonRef.checked = false;
     counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
 })
