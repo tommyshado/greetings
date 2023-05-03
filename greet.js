@@ -1,7 +1,6 @@
 const greetFactory = () => {
     let namesLst = [];
     let currentName = '';
-    let counter = 0;
 
     let getName = function(name) {
         let nameString = (name.toLowerCase()).trim();
@@ -15,16 +14,8 @@ const greetFactory = () => {
         return currentName;
     }
 
-    let greetingsCounter = function() {
-        for (let i = 0; i < namesLst.length; i++) {
-            if (logsName() === namesLst[i]) {
-                counter++;
-            }
-        }
-    }
-
     let logsCounter = function() {
-        return counter;
+        return namesLst.length;
     }
 
     let msg = ''
@@ -46,17 +37,8 @@ const greetFactory = () => {
     return {
         getName,
         logsName,
-        greetingsCounter,
         logsCounter,
         greet,
         greetMsg
     };
 }
-
-
-let instance = greetFactory();
-instance.getName('Mthunzi');
-instance.getName('anathi');
-instance.getName('Otha');
-instance.greetingsCounter();
-console.log(instance.logsCounter());
