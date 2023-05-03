@@ -23,3 +23,7 @@ greetBtnRef.addEventListener('click', () => {
     instaOfGreetFactory.logsName();
     counterGreet.innerHTML = instaOfGreetFactory.logsCounter();
 });
+
+resetBtn.addEventListener('click', () => {
+    counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
+})
