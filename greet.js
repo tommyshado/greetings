@@ -34,11 +34,16 @@ const greetFactory = () => {
         return msg;
     }
 
+    let resetCounter = function() {
+        return 0;
+    }
+
     return {
         getName,
         logsName,
         logsCounter,
         greet,
-        greetMsg
+        greetMsg,
+        resetCounter
     };
 }
