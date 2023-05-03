@@ -6,3 +6,8 @@ body {
 #counter {
     font-size: 40px;
 }
+
+.box-model {
+    padding: 1em;
+    margin: 1em;
+}
