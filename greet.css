@@ -1,4 +1,8 @@
-#counter {
+body {
     font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+}
+
+#counter {
     font-size: 40px;
 }
