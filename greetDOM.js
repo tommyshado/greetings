@@ -3,6 +3,7 @@ const greetBtnRef = document.querySelector('.greetMeBtn');
 const inputGreetRef = document.querySelector('#greet');
 const counterGreet = document.querySelector('#counter');
 const radioButtonRef = document.querySelector('.language');
+const resetBtn = document.querySelector('.resetBtn');
 
 const instaOfGreetFactory = greetFactory();
 
