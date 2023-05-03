@@ -1,23 +1,25 @@
 const greetFactory = () => {
-    const greetsObject = {};
-
-    let nameString = '';
+    let namesLst = [];
+    let currentName = '';
     let counter = 0;
 
-    const getName = function(name) {
-        if(typeof name === 'string') {
-            nameString = `${(name.toLowerCase()).trim()}`;
+    let getName = function(name) {
+        let nameString = (name.toLowerCase()).trim();
+        if(!(namesLst.includes(nameString))) {
+            currentName = nameString;
+            namesLst.push(currentName);
         }
     }
 
-    const logsName = function() {
-        return nameString;
+    let logsName = function() {
+        return currentName;
     }
 
     let greetingsCounter = function() {
-        while(logsName()) {
-            counter++;
-            break;
+        for (let i = 0; i < namesLst.length; i++) {
+            if (logsName() === namesLst[i]) {
+                counter++;
+            }
         }
     }
 
@@ -25,26 +27,20 @@ const greetFactory = () => {
         return counter;
     }
 
-    const checkedRadioBtn = function(radioReference) {
-        if(radioReference === true) {
-            greetsObject[getRadioValue()] = undefined;
+    let msg = ''
+
+    let greet = function(language) {
+        if (language === 'IsiXhosa') {
+            msg = `Molo ${logsName()}`;
+        } else if (language === 'IsiSutho') {
+            msg = `Dumelang ${logsName()}`;
+        } else {
+            msg = `Hello ${logsName()}`
         }
     }
 
-    const getRadioValue = function(radioReference) {
-        return radioReference;
-    }
-
-    const getGreeting = function() {
-        for (let greetingKey in greetsObject) {
-            if (greetingKey === 'IsiXhosa') {
-                return "Molweni,";
-            } else if (greetingKey === 'IsiSutho') {
-                return 'Dumelang,'
-            } else {
-                return 'Hello,'
-            }
-        }
+    let greetMsg = function() {
+        return msg;
     }
 
     return {
@@ -52,8 +48,15 @@ const greetFactory = () => {
         logsName,
         greetingsCounter,
         logsCounter,
-        checkedRadioBtn,
-        getGreeting,
-        getRadioValue
+        greet,
+        greetMsg
     };
 }
+
+
+let instance = greetFactory();
+instance.getName('Mthunzi');
+instance.getName('anathi');
+instance.getName('Otha');
+instance.greetingsCounter();
+console.log(instance.logsCounter());

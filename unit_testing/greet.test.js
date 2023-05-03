@@ -1,11 +1,4 @@
 describe('"greetFactory" is a factory function name', () => {
-    it('the "greetFactory" function has "getName" as a method', () => {
-        assert.equal('getName' in greetFactory(), true);
-    });
-
-    it('the "greetFactory" function has "logsName" as a method', () => {
-        assert.equal('logsName' in greetFactory(), true);
-    });
 
     describe('get string name and logs the string name', () => {
         it('should be able to get the name and logs the name and returns the name', () => {
@@ -74,7 +67,7 @@ describe('"greetFactory" is a factory function name', () => {
     //     });
     // })
 
-    describe('greetings count', () => {
+    describe('greetings count for different names', () => {
         it('should be able to return 0 when the number of greetings are 0', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName();
@@ -124,5 +117,64 @@ describe('"greetFactory" is a factory function name', () => {
 
             assert.equal(greetingsInstance.logsCounter(), 3);
         });
+
+        it('should be able to return the correct number of greeting for two or more different name', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+                greetingsInstance.getName('Kat');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+                greetingsInstance.getName('John');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+                
+
+            assert.equal(greetingsInstance.logsCounter(), 3);
+        });
+    })
+
+    describe('greetings count when names are the same', () => {
+        it('should count one name, when the same names are got from the greetingsInstance on separate lines', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+            assert.equal(greetingsInstance.logsCounter(), 1)
+        })
+
+        it('should count one name, when the same names are got from the greetingsInstance on separate lines', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+            assert.equal(greetingsInstance.logsCounter(), 1)
+        })
+
+        it('should count one name, when the same names are got from the greetingsInstance on separate lines', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+                greetingsInstance.getName('Malebo');
+                greetingsInstance.logsName();
+                greetingsInstance.greetingsCounter();
+
+            assert.equal(greetingsInstance.logsCounter(), 1)
+        })
     })
 })
