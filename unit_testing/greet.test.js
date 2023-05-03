@@ -40,7 +40,6 @@ describe('"greetFactory" is a factory function name', () => {
     describe('greetings count the number of greetings', () => {
         it('should be able to count that 0 people have been greeted', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName();
             assert.equal(greetingsInstance.logsCounter(), 0);
         });
 
@@ -120,7 +119,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('malebo');
                 greetingsInstance.getName('bjorn');
 
-            assert.equal(greetingsInstance.logsCounter(), 1);
+            assert.equal(greetingsInstance.logsCounter(), 2);
         })
 
         it('should be able to identify when the names are the same and not count more than one', () => {
