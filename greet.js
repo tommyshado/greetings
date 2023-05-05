@@ -1,7 +1,8 @@
 const greetFactory = () => {
     let namesObjGreet = {};
     let currentName = '';
-    let greetingsCounter = 0;
+    // countResult storing it in the factory function
+    let greetingsCounter =  countResult || 0;
 
     let getName = function(name) {
         let nameString = (name.toLowerCase()).trim();
@@ -47,6 +48,14 @@ const greetFactory = () => {
         return name;
     }
 
+    // let errorMsg = function() {
+    //     return 'Enter valid name'
+    // }
+
+    // let errorMsgBtn = function() {
+
+    // }
+
     return {
         getName,
         logsName,
@@ -54,6 +63,8 @@ const greetFactory = () => {
         greet,
         greetMsg,
         resetCounter,
-        specialCharsHandler
+        specialCharsHandler,
+        // errorMsg,
+        // errorMsgBtn
     };
 }
