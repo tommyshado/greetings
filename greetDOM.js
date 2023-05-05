@@ -40,6 +40,7 @@ resetBtn.addEventListener('click', () => {
     }
     
     localStorage.clear();
+    location.reload();
     greetReferenceElement.innerHTML = '';
     counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
 })
