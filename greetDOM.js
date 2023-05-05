@@ -1,6 +1,6 @@
-const nameElementRef = document.querySelector('.nameString');
+const nameElementReference = document.querySelector('.nameString');
 const greetBtnRef = document.querySelector('.greetMeBtn');
-const inputGreetRef = document.querySelector('#greet');
+const greetReferenceElement = document.querySelector('#greet');
 const counterGreet = document.querySelector('#counter');
 const radioButtonRef = document.querySelectorAll('.language');
 const resetBtn = document.querySelector('.resetBtn');
@@ -16,17 +16,17 @@ const instaOfGreetFactory = greetFactory(countResult);
 greetBtnRef.addEventListener('click', () => {
     const radioBtnReference = document.querySelector('input[name="lang"]:checked');
 
-    instaOfGreetFactory.getName(nameElementRef.value);
+    instaOfGreetFactory.getName(nameElementReference.value);
 
     if (radioBtnReference) {
         let radioValue = radioBtnReference.value;
-        if (nameElementRef.value) {
+        if (nameElementReference.value) {
             instaOfGreetFactory.greet(radioValue);
         }
     }
     
-    inputGreetRef.innerHTML = instaOfGreetFactory.greetMsg();
-    nameElementRef.value = '';
+    greetReferenceElement.innerHTML = instaOfGreetFactory.greetMsg();
+    nameElementReference.value = '';
 
     instaOfGreetFactory.logsName();
     counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
@@ -40,5 +40,6 @@ resetBtn.addEventListener('click', () => {
     }
     
     localStorage.clear();
+    greetReferenceElement.innerHTML = '';
     counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
 })
