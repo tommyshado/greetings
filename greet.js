@@ -1,12 +1,16 @@
 const greetFactory = () => {
-    let namesLst = [];
+    let namesObjGreet = {};
     let currentName = '';
+    let greetingsCounter = 0;
 
     let getName = function(name) {
         let nameString = (name.toLowerCase()).trim();
-        if(!(namesLst.includes(nameString))) {
+        if(namesObjGreet[nameString] === undefined) {
+            greetingsCounter++;
             currentName = nameString;
-            namesLst.push(currentName);
+            namesObjGreet[currentName]++;
+        } else {
+            namesObjGreet[currentName] = 1;
         }
     }
 
@@ -15,14 +19,14 @@ const greetFactory = () => {
     }
 
     let greetCounter = function() {
-        return namesLst.length;
+        return greetingsCounter;
     }
 
     let msg = ''
 
     let greet = function(language) {
         if (language === 'IsiXhosa') {
-            msg = `Molo ${logsName()}`;
+            msg = `Molo ${specialCharsHandler()}`;
         } else if (language === 'IsiSutho') {
             msg = `Dumelang ${logsName()}`;
         } else {
@@ -38,12 +42,18 @@ const greetFactory = () => {
         return 0;
     }
 
+    let specialCharsHandler = function() {
+        let name = logsName().split(',').join('').split('*').join('').split('@').join('').split('#').join("");
+        return name;
+    }
+
     return {
         getName,
         logsName,
         greetCounter,
         greet,
         greetMsg,
-        resetCounter
+        resetCounter,
+        specialCharsHandler
     };
 }
