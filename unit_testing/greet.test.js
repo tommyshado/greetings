@@ -37,6 +37,29 @@ describe('"greetFactory" is a factory function name', () => {
 
     });
 
+    describe('handles special characters', () => {
+        it('should be able to handle special characters', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('m,#@*,,,**alebo');
+
+            assert.equal(greetingsInstance.specialCharsHandler(), 'malebo');
+        })
+
+        it('should be able to handle special characters', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('mthunz#@i');
+
+            assert.equal(greetingsInstance.specialCharsHandler(), 'mthunzi');
+        })
+
+        it('should be able to handle special characters', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('b,jo*rn');
+
+            assert.equal(greetingsInstance.specialCharsHandler(), 'bjorn');
+        })
+    })
+
     describe('greetings count the number of greetings', () => {
         it('should be able to count that 0 people have been greeted', () => {
             let greetingsInstance = greetFactory();
@@ -172,4 +195,33 @@ describe('"greetFactory" is a factory function name', () => {
             assert.equal(greetingsInstance.resetCounter(), 0)
         })
     })
+
+    describe('error messages', () => {
+        it('should be able display the message "Enter valid name" when inputted special characters only', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('@$%#&^@#!#');
+
+            assert.equal(greetingsInstance.errorMsg(), 'Enter valid name');
+        })
+
+        it('should be able display the message "Enter valid name" when inputted special characters only', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('{}[[]!@@@!!');
+
+            assert.equal(greetingsInstance.errorMsg(), 'Enter valid name');
+        })
+
+        it('should be able to display the message "Please check a button first"', () => {
+            let greetingsInstance = greetFactory();
+                
+            assert.equal(greetingsInstance.errorMsgBtn(), "Please check a button first");
+        })
+
+        it('should be able to display the message "Please check a button first"', () => {
+            let greetingsInstance = greetFactory();
+                
+            assert.equal(greetingsInstance.errorMsgBtn(), "Please check a button first");
+        })
+    })
+
 })
