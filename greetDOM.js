@@ -4,12 +4,14 @@ const inputGreetRef = document.querySelector('#greet');
 const counterGreet = document.querySelector('#counter');
 const radioButtonRef = document.querySelectorAll('.language');
 const resetBtn = document.querySelector('.resetBtn');
+var countResult = 0;
 
 if (localStorage['counter']) {
-    counterGreet.innerHTML = Number(localStorage['counter']);
+    countResult = Number(localStorage['counter']);
+    counterGreet.innerHTML = countResult;
 }
 
-const instaOfGreetFactory = greetFactory();
+const instaOfGreetFactory = greetFactory(countResult);
 
 greetBtnRef.addEventListener('click', () => {
     const radioBtnReference = document.querySelector('input[name="lang"]:checked');
@@ -18,7 +20,9 @@ greetBtnRef.addEventListener('click', () => {
 
     if (radioBtnReference) {
         let radioValue = radioBtnReference.value;
-        instaOfGreetFactory.greet(radioValue);
+        if (nameElementRef.value) {
+            instaOfGreetFactory.greet(radioValue);
+        }
     }
     
     inputGreetRef.innerHTML = instaOfGreetFactory.greetMsg();
@@ -36,5 +40,5 @@ resetBtn.addEventListener('click', () => {
     }
     
     localStorage.clear();
-    location.reload()
+    counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
 })
