@@ -26,6 +26,7 @@ greetBtnRef.addEventListener('click', () => {
 
     instaOfGreetFactory.logsName();
     counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
+
     localStorage['counter'] = instaOfGreetFactory.greetCounter();
 });
 
@@ -35,5 +36,5 @@ resetBtn.addEventListener('click', () => {
     }
     
     localStorage.clear();
-    location.reload();
+    location.reload()
 })
