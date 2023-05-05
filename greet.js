@@ -28,9 +28,9 @@ const greetFactory = () => {
         if (language === 'IsiXhosa') {
             msg = `Molo ${specialCharsHandler()}`;
         } else if (language === 'IsiSutho') {
-            msg = `Dumelang ${logsName()}`;
+            msg = `Dumelang ${specialCharsHandler()}`;
         } else {
-            msg = `Hello ${logsName()}`
+            msg = `Hello ${specialCharsHandler()}`
         }
     }
 
