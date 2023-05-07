@@ -11,8 +11,8 @@ const instaOfGreetFactory = greetFactory(countResult);
 
 // initializing the name in the factory function to the local storage as a key
 // here I am invoking the name and storing it in the local storage
-if (localStorage[instaOfGreetFactory.getNameObjGreet()]) {
-    countResult = Number(localStorage[instaOfGreetFactory.getNameObjGreet()]);
+if (localStorage['counter']) {
+    countResult = Number(localStorage['counter']);
     counterGreet.innerHTML = countResult;
 }
 
@@ -36,7 +36,7 @@ greetBtnRef.addEventListener('click', () => {
         instaOfGreetFactory.logsName();
         counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
 
-        localStorage.setItem(instaOfGreetFactory.getNameObjGreet(), instaOfGreetFactory.greetCounter());
+        localStorage.setItem('counter', instaOfGreetFactory.greetCounter());
         greetReferenceElement.innerHTML = instaOfGreetFactory.errorMsg();
     }
 });
@@ -49,5 +49,6 @@ resetBtn.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
     greetReferenceElement.innerHTML = '';
+    alert('Are you sure you want to clear the local storage?'),
     counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
 })
