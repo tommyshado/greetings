@@ -1,4 +1,4 @@
-const greetFactory = () => {
+const greetFactory = (countResult) => {
     let namesObjGreet = {};
     let currentName = '';
     // countResult storing it in the factory function
@@ -12,6 +12,13 @@ const greetFactory = () => {
             namesObjGreet[currentName]++;
         } else {
             namesObjGreet[currentName] = 1;
+        }
+    }
+
+    // need to write a test for this function
+    let getNameObjGreet = function() {
+        for (let name in namesObjGreet) {
+            return name;
         }
     }
 
@@ -44,17 +51,25 @@ const greetFactory = () => {
     }
 
     let specialCharsHandler = function() {
-        let name = logsName().split(',').join('').split('*').join('').split('@').join('').split('#').join("");
-        return name;
+        let pattern = "^[a-zA-Z]*$"
+        if(!logsName().match(pattern)) {
+            return 'Please enter valid characters e.g "abCde"';
+        } else {
+            return logsName();
+        }
+    };
+
+    let errorMsg = function() {
+        if (!(msg.split(' ')).includes(logsName())) {
+            return 'Enter valid name';
+        } else {
+            return greetMsg();
+        }
     }
 
-    // let errorMsg = function() {
-    //     return 'Enter valid name'
-    // }
-
-    // let errorMsgBtn = function() {
-
-    // }
+    let errorMsgBtn = function() {
+        return "Please check a button first";
+    }
 
     return {
         getName,
@@ -64,7 +79,8 @@ const greetFactory = () => {
         greetMsg,
         resetCounter,
         specialCharsHandler,
-        // errorMsg,
-        // errorMsgBtn
+        errorMsg,
+        errorMsgBtn,
+        getNameObjGreet
     };
 }
