@@ -6,32 +6,39 @@ const radioButtonRef = document.querySelectorAll('.language');
 const resetBtn = document.querySelector('.resetBtn');
 var countResult = 0;
 
-if (localStorage['counter']) {
-    countResult = Number(localStorage['counter']);
-    counterGreet.innerHTML = countResult;
-}
 
 const instaOfGreetFactory = greetFactory(countResult);
+
+// initializing the name in the factory function to the local storage as a key
+// here I am invoking the name and storing it in the local storage
+if (localStorage[instaOfGreetFactory.getNameObjGreet()]) {
+    countResult = Number(localStorage[instaOfGreetFactory.getNameObjGreet()]);
+    counterGreet.innerHTML = countResult;
+}
 
 greetBtnRef.addEventListener('click', () => {
     const radioBtnReference = document.querySelector('input[name="lang"]:checked');
 
-    instaOfGreetFactory.getName(nameElementReference.value);
+    if (nameElementReference.value !== '') {
 
-    if (radioBtnReference) {
-        let radioValue = radioBtnReference.value;
-        if (nameElementReference.value) {
-            instaOfGreetFactory.greet(radioValue);
+        instaOfGreetFactory.getName(nameElementReference.value);
+
+        if (radioBtnReference) {
+            let radioValue = radioBtnReference.value;
+            if (nameElementReference.value) {
+                instaOfGreetFactory.greet(radioValue);
+            }
         }
+
+        greetReferenceElement.innerHTML = instaOfGreetFactory.greetMsg();
+        nameElementReference.value = '';
+
+        instaOfGreetFactory.logsName();
+        counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
+
+        localStorage.setItem(instaOfGreetFactory.getNameObjGreet(), instaOfGreetFactory.greetCounter());
+        greetReferenceElement.innerHTML = instaOfGreetFactory.errorMsg();
     }
-    
-    greetReferenceElement.innerHTML = instaOfGreetFactory.greetMsg();
-    nameElementReference.value = '';
-
-    instaOfGreetFactory.logsName();
-    counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
-
-    localStorage['counter'] = instaOfGreetFactory.greetCounter();
 });
 
 resetBtn.addEventListener('click', () => {
