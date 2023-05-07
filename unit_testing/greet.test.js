@@ -224,4 +224,101 @@ describe('"greetFactory" is a factory function name', () => {
         })
     })
 
+    describe('get the names in the object', () => {
+        it('should be able to get the name in the object of names', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('tom');
+
+            assert.equal(greetingsInstance.getNameObjGreet(), 'tom');
+        })
+
+        it('should be able to get the name in the object of names', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('landa');
+
+            assert.equal(greetingsInstance.getNameObjGreet(), 'landa');
+        })
+
+        it('should be able to get the name in the object of names', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('lusanda');
+
+            assert.equal(greetingsInstance.getNameObjGreet(), 'lusanda');
+        })
+
+        it('should be able to get the name in the object of names', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('anele');
+
+            assert.equal(greetingsInstance.getNameObjGreet(), 'anele');
+        })
+    })
+
+    describe('not increment the same name again in the object', () => {
+        it('should be able to increment the name value once in the object', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('tom');
+                greetingsInstance.getName('tom');
+                greetingsInstance.getName('tom');
+                greetingsInstance.getNameObjGreet();
+
+            assert.equal(greetingsInstance.greetCounter(), 1);
+        })
+
+        it('should be able to increment the name value once in the object', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('landa');
+                greetingsInstance.getName('landa');
+                greetingsInstance.getNameObjGreet();
+
+            assert.equal(greetingsInstance.greetCounter(), 1);
+        })
+
+        it('should be able to increment the name value once in the object', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('lusanda');
+                greetingsInstance.getName('lusanda');
+                greetingsInstance.getNameObjGreet();
+
+            assert.equal(greetingsInstance.greetCounter(), 1);
+        })
+
+        it('should be able to increment the name value once in the object', () => {
+            let greetingsInstance = greetFactory();
+                greetingsInstance.getName('anele');
+
+            assert.equal(greetingsInstance.greetCounter(), 1);
+        })
+    })
+
+    describe('continue counting from the number in the local storage when local storage is not cleared', () => {
+        it('should be able to counting starting at the value in the local storage', () => {
+            let greetingsInstance = greetFactory(2);
+                greetingsInstance.getName('tom');
+
+            assert.equal(greetingsInstance.greetCounter(), 3)
+        })
+
+        it('should be able to counting starting at the value in the local storage', () => {
+            let greetingsInstance = greetFactory(5);
+                greetingsInstance.getName('tom');
+
+            assert.equal(greetingsInstance.greetCounter(), 6)
+        })
+
+        it('should be able to counting starting at the value in the local storage', () => {
+            let greetingsInstance = greetFactory(1);
+                greetingsInstance.getName('landa');
+
+            assert.equal(greetingsInstance.greetCounter(), 2)
+        })
+
+        it('should be able to counting starting at the value in the local storage', () => {
+            let greetingsInstance = greetFactory(3);
+                greetingsInstance.getName('mthunzi');
+
+            assert.equal(greetingsInstance.greetCounter(), 4)
+        })
+    })
+
 })
