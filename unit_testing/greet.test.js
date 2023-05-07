@@ -42,21 +42,21 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('m,#@*,,,**alebo');
 
-            assert.equal(greetingsInstance.specialCharsHandler(), 'malebo');
+            assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
         })
 
         it('should be able to handle special characters', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('mthunz#@i');
 
-            assert.equal(greetingsInstance.specialCharsHandler(), 'mthunzi');
+            assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
         })
 
         it('should be able to handle special characters', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('b,jo*rn');
 
-            assert.equal(greetingsInstance.specialCharsHandler(), 'bjorn');
+            assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
         })
     })
 
