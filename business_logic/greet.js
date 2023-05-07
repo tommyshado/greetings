@@ -9,9 +9,9 @@ const greetFactory = (countResult) => {
         if(namesObjGreet[nameString] === undefined) {
             greetingsCounter++;
             currentName = nameString;
-            namesObjGreet[currentName]++;
+            namesObjGreet[nameString]++;
         } else {
-            namesObjGreet[currentName] = 1;
+            namesObjGreet[nameString] = 1;
         }
     }
 
@@ -20,6 +20,10 @@ const greetFactory = (countResult) => {
         for (let name in namesObjGreet) {
             return name;
         }
+    }
+
+    let greetedNames = function() {
+        return namesObjGreet;
     }
 
     let logsName = function() {
@@ -81,6 +85,7 @@ const greetFactory = (countResult) => {
         specialCharsHandler,
         errorMsg,
         errorMsgBtn,
-        getNameObjGreet
+        getNameObjGreet,
+        greetedNames
     };
 }
