@@ -36,7 +36,7 @@ greetBtnRef.addEventListener('click', () => {
         instaOfGreetFactory.logsName();
         counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
 
-        localStorage.setItem('counter', instaOfGreetFactory.greetCounter());
+        // localStorage.setItem('counter', instaOfGreetFactory.greetCounter());
         localStorage.setItem('greetedNames', JSON.stringify(Object.keys(instaOfGreetFactory.greetedNames())));
         greetReferenceElement.innerHTML = instaOfGreetFactory.errorMsg();
     }
