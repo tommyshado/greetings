@@ -229,28 +229,28 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('tom');
 
-            assert.equal(greetingsInstance.getNameObjGreet(), 'tom');
+            assert.equal(greetingsInstance.getNameGreeted(), 'tom');
         })
 
         it('should be able to get the name in the object of names', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('landa');
 
-            assert.equal(greetingsInstance.getNameObjGreet(), 'landa');
+            assert.equal(greetingsInstance.getNameGreeted(), 'landa');
         })
 
         it('should be able to get the name in the object of names', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('lusanda');
 
-            assert.equal(greetingsInstance.getNameObjGreet(), 'lusanda');
+            assert.equal(greetingsInstance.getNameGreeted(), 'lusanda');
         })
 
         it('should be able to get the name in the object of names', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('anele');
 
-            assert.equal(greetingsInstance.getNameObjGreet(), 'anele');
+            assert.equal(greetingsInstance.getNameGreeted(), 'anele');
         })
     })
 
@@ -260,7 +260,7 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('tom');
                 greetingsInstance.getName('tom');
                 greetingsInstance.getName('tom');
-                greetingsInstance.getNameObjGreet();
+                greetingsInstance.getNameGreeted();
 
             assert.equal(greetingsInstance.greetCounter(), 1);
         })
@@ -269,7 +269,7 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('landa');
                 greetingsInstance.getName('landa');
-                greetingsInstance.getNameObjGreet();
+                greetingsInstance.getNameGreeted();
 
             assert.equal(greetingsInstance.greetCounter(), 1);
         })
@@ -278,7 +278,7 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('lusanda');
                 greetingsInstance.getName('lusanda');
-                greetingsInstance.getNameObjGreet();
+                greetingsInstance.getNameGreeted();
 
             assert.equal(greetingsInstance.greetCounter(), 1);
         })

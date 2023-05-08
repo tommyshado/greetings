@@ -16,7 +16,7 @@ const greetFactory = (countResult) => {
     }
 
     // need to write a test for this function
-    let getNameObjGreet = function() {
+    let getNameGreeted = function() {
         for (let name in namesObjGreet) {
             return name;
         }
@@ -85,7 +85,7 @@ const greetFactory = (countResult) => {
         specialCharsHandler,
         errorMsg,
         errorMsgBtn,
-        getNameObjGreet,
+        getNameGreeted,
         greetedNames
     };
 }
