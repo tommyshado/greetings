@@ -50,6 +50,6 @@ resetBtn.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
     greetReferenceElement.innerHTML = '';
-    alert('Are you sure you want to clear the local storage?'),
+    alert('The local storage is now cleared.');
     counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
 })
