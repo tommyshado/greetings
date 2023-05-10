@@ -19,3 +19,7 @@ body {
     background-color: #BDE0FE;
     padding: 1.5em;
 }
+
+.danger {
+    color: red;
+}

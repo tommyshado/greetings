@@ -1,48 +1,48 @@
 const greetFactory = (countResult) => {
-    let namesObjGreet = {};
+    let namesOfGreeted = {};
     let currentName = '';
     // countResult storing it in the factory function
     let greetingsCounter =  countResult || 0;
 
     let getName = function(name) {
         let nameString = (name.toLowerCase()).trim();
-        if(namesObjGreet[nameString] === undefined) {
+        if(namesOfGreeted[nameString] === undefined) {
             greetingsCounter++;
             currentName = nameString;
-            namesObjGreet[nameString]++;
+            namesOfGreeted[currentName] = 1;
         } else {
-            namesObjGreet[nameString] = 1;
+            namesOfGreeted[currentName]++;
         }
     }
 
     // need to write a test for this function
-    let getNameGreeted = function() {
-        for (let name in namesObjGreet) {
-            return name;
-        }
-    }
+    // let getNameGreeted = function() {
+    //     for (let name in namesObjGreet) {
+    //         return name;
+    //     }
+    // }
 
     let greetedNames = function() {
-        return namesObjGreet;
+        return namesOfGreeted;
     }
 
-    let logsName = function() {
-        return currentName;
-    }
+    // let logsName = function() {
+    //     return currentName;
+    // }
 
     let greetCounter = function() {
         return greetingsCounter;
     }
 
-    let msg = ''
+    let msg = '';
 
     let greet = function(language) {
         if (language === 'IsiXhosa') {
-            msg = `Molo ${specialCharsHandler()}`;
+            msg = `Molo ${validName()}`;
         } else if (language === 'IsiSutho') {
-            msg = `Dumelang ${specialCharsHandler()}`;
+            msg = `Dumelang ${validName()}`;
         } else {
-            msg = `Hello ${specialCharsHandler()}`
+            msg = `Hello ${validName()}`
         }
     }
 
@@ -54,38 +54,50 @@ const greetFactory = (countResult) => {
         return 0;
     }
 
-    let specialCharsHandler = function() {
-        let pattern = "^[a-zA-Z]*$"
-        if(!logsName().match(pattern)) {
-            return 'Please enter valid characters e.g "abCde"';
+    let validName = function() {
+        let pattern = /[^A-Za-z 0-9]/g;
+        if(!pattern.test(currentName)) {
+            return currentName;
         } else {
-            return logsName();
+            msg = 'Enter valid name';
+            return msg
         }
     };
 
-    let errorMsg = function() {
-        if (!(msg.split(' ')).includes(logsName())) {
-            return 'Enter valid name';
-        } else {
-            return greetMsg();
-        }
-    }
+    // let errorMsg = function() {
+    //     if (!(msg.split(' ')).includes(logsName())) {
+    //         return 'Enter valid name';
+    //     } else {
+    //         return greetMsg();
+    //     }
+    // }
 
-    let errorMsgBtn = function() {
-        return "Please check a button first";
+    let errorMessages = function(name, lang) {
+        if(name == "" && lang === null){
+            return "Please enter name and select language"
+        }
+
+        if(name === ""){
+           return "Please enter name"
+        }
+
+        if(lang === null){
+            return "Select language"
+        }
+        return '';
     }
 
     return {
         getName,
-        logsName,
+        // logsName,
         greetCounter,
         greet,
         greetMsg,
         resetCounter,
-        specialCharsHandler,
-        errorMsg,
-        errorMsgBtn,
-        getNameGreeted,
+        validName,
+        // errorMsg,
+        errorMessages,
+        // getNameGreeted,
         greetedNames
     };
 }

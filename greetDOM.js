@@ -4,13 +4,12 @@ const greetReferenceElement = document.querySelector('#greet');
 const counterGreet = document.querySelector('#counter');
 const radioButtonRef = document.querySelectorAll('.language');
 const resetBtn = document.querySelector('.resetBtn');
+const errorMsg = document.querySelector('#errorMsg');
 var countResult = 0;
 
 
 const instaOfGreetFactory = greetFactory(countResult);
 
-// initializing the name in the factory function to the local storage as a key
-// here I am invoking the name and storing it in the local storage
 if (localStorage['counter']) {
     countResult = Number(localStorage['counter']);
     counterGreet.innerHTML = countResult;
@@ -18,28 +17,27 @@ if (localStorage['counter']) {
 
 greetBtnRef.addEventListener('click', () => {
     const radioBtnReference = document.querySelector('input[name="lang"]:checked');
-
-    if (nameElementReference.value !== '') {
-
+    
+    if (radioBtnReference) {
         instaOfGreetFactory.getName(nameElementReference.value);
-
-        if (radioBtnReference) {
-            let radioValue = radioBtnReference.value;
-            if (nameElementReference.value) {
-                instaOfGreetFactory.greet(radioValue);
-            }
-        }
-
+        let radioValue = radioBtnReference.value;
+        instaOfGreetFactory.greet(radioValue);
+        
         greetReferenceElement.innerHTML = instaOfGreetFactory.greetMsg();
-        nameElementReference.value = '';
-
-        instaOfGreetFactory.logsName();
         counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
-
-        // localStorage.setItem('counter', instaOfGreetFactory.greetCounter());
-        localStorage.setItem('greetedNames', JSON.stringify(Object.keys(instaOfGreetFactory.greetedNames())));
-        greetReferenceElement.innerHTML = instaOfGreetFactory.errorMsg();
     }
+
+    localStorage.setItem('counter', instaOfGreetFactory.greetCounter());
+    localStorage.setItem('greetedNames', JSON.stringify(instaOfGreetFactory.greetedNames()));
+    
+    errorMsg.innerHTML = instaOfGreetFactory.errorMessages(nameElementReference.value, radioBtnReference);
+    errorMsg.classList.add('danger');
+    
+    setTimeout(() => {
+        errorMsg.style.display = "none"
+    }, 5000);
+
+    nameElementReference.value = '';
 });
 
 resetBtn.addEventListener('click', () => {
@@ -49,7 +47,12 @@ resetBtn.addEventListener('click', () => {
     
     localStorage.clear();
     location.reload();
-    greetReferenceElement.innerHTML = '';
-    alert('The local storage is now cleared.');
+    errorMsg.innerHTML = 'The local storage has been cleared';
+    errorMsg.classList.add('danger');
+    setTimeout(() => {
+        errorMsg.style.display = 'none'
+    }, 5000);
+
     counterGreet.innerHTML = instaOfGreetFactory.resetCounter();
+    greetReferenceElement.innerHTML = '';
 })

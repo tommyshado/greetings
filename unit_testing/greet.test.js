@@ -1,64 +1,64 @@
 describe('"greetFactory" is a factory function name', () => {
 
-    describe('get string name and logs the string name', () => {
-        it('should be able to get the name and logs the name and returns the name', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('kat');
+    // describe('get string name and logs the string name', () => {
+    //     it('should be able to get the name and logs the name and returns the name', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('kat');
             
-            assert.equal(greetingsInstance.logsName(), 'kat');
-        });
+    //         assert.equal(greetingsInstance.logsName(), 'kat');
+    //     });
 
-        it('should be able to handle casing well', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('KAT');
+    //     it('should be able to handle casing well', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('KAT');
 
-            assert.equal(greetingsInstance.logsName(), 'kat');
-        });
+    //         assert.equal(greetingsInstance.logsName(), 'kat');
+    //     });
 
-        it('should be able to trim the spaces around a string', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName(' MAlebO  ');
+    //     it('should be able to trim the spaces around a string', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName(' MAlebO  ');
 
-            assert.equal(greetingsInstance.logsName(), 'malebo');
-        });
+    //         assert.equal(greetingsInstance.logsName(), 'malebo');
+    //     });
 
-        it('should be able to handle casing well', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('NiCHoLAs');
+    //     it('should be able to handle casing well', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('NiCHoLAs');
 
-            assert.equal(greetingsInstance.logsName(), 'nicholas');
-        });
-        it('should be able to handle strings well even when there are number in a string', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('BJo10rN');
+    //         assert.equal(greetingsInstance.logsName(), 'nicholas');
+    //     });
+    //     it('should be able to handle strings well even when there are number in a string', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('BJo10rN');
 
-            assert.equal(greetingsInstance.logsName(), 'bjo10rn');
-        });
+    //         assert.equal(greetingsInstance.logsName(), 'bjo10rn');
+    //     });
 
-    });
+    // });
 
-    describe('handles special characters', () => {
-        it('should be able to handle special characters', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('m,#@*,,,**alebo');
+    // describe('handles special characters', () => {
+    //     it('should be able to handle special characters', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('m,#@*,,,**alebo');
 
-            assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
-        })
+    //         assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
+    //     })
 
-        it('should be able to handle special characters', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('mthunz#@i');
+    //     it('should be able to handle special characters', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('mthunz#@i');
 
-            assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
-        })
+    //         assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
+    //     })
 
-        it('should be able to handle special characters', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('b,jo*rn');
+    //     it('should be able to handle special characters', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('b,jo*rn');
 
-            assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
-        })
-    })
+    //         assert.equal(greetingsInstance.specialCharsHandler(), 'Please enter valid characters e.g "abCde"');
+    //     })
+    // })
 
     describe('greetings count the number of greetings', () => {
         it('should be able to count that 0 people have been greeted', () => {
@@ -201,58 +201,81 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('@$%#&^@#!#');
 
-            assert.equal(greetingsInstance.errorMsg(), 'Enter valid name');
+            assert.equal(greetingsInstance.validName(), 'Enter valid name');
         })
 
         it('should be able display the message "Enter valid name" when inputted special characters only', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('{}[[]!@@@!!');
 
-            assert.equal(greetingsInstance.errorMsg(), 'Enter valid name');
+            assert.equal(greetingsInstance.validName(), 'Enter valid name');
+        })
+
+        it('should be able to display the message "Please enter name and select language" when no name and language is entered', () => {
+            let greetingsInstance = greetFactory();
+                
+            assert.equal(greetingsInstance.errorMessages('', null), "Please enter name and select language");
         })
 
         it('should be able to display the message "Please check a button first"', () => {
             let greetingsInstance = greetFactory();
                 
-            assert.equal(greetingsInstance.errorMsgBtn(), "Please check a button first");
-        })
-
-        it('should be able to display the message "Please check a button first"', () => {
-            let greetingsInstance = greetFactory();
-                
-            assert.equal(greetingsInstance.errorMsgBtn(), "Please check a button first");
+            assert.equal(greetingsInstance.errorMessages('Otha', null), "Select language");
         })
     })
 
-    describe('get the names in the object', () => {
-        it('should be able to get the name in the object of names', () => {
+    describe('valid messages', () => {
+        it('should be able to show the correct message when user checks a language and inputs a name', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName('tom');
+                greetingsInstance.getName("Mthunzi");
+                greetingsInstance.greet('IsiXhosa')
+            assert.equal(greetingsInstance.greetMsg(), 'Molo mthunzi')
+        });
 
-            assert.equal(greetingsInstance.getNameGreeted(), 'tom');
-        })
-
-        it('should be able to get the name in the object of names', () => {
+        it('should be able to show the correct message when user checks a language and inputs a name', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName('landa');
+                greetingsInstance.getName("Tom");
+                greetingsInstance.greet('English')
+            assert.equal(greetingsInstance.greetMsg(), 'Hello tom')
+        });
 
-            assert.equal(greetingsInstance.getNameGreeted(), 'landa');
-        })
-
-        it('should be able to get the name in the object of names', () => {
+        it('should be able to show the correct message when user checks a language and inputs a name', () => {
             let greetingsInstance = greetFactory();
-                greetingsInstance.getName('lusanda');
+                greetingsInstance.getName("Tom");
+                greetingsInstance.greet('IsiSutho')
+            assert.equal(greetingsInstance.greetMsg(), 'Dumelang tom')
+        });
+    });
 
-            assert.equal(greetingsInstance.getNameGreeted(), 'lusanda');
-        })
+    // describe('get the names in the object', () => {
+    //     it('should be able to get the name in the object of names', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('tom');
 
-        it('should be able to get the name in the object of names', () => {
-            let greetingsInstance = greetFactory();
-                greetingsInstance.getName('anele');
+    //         assert.equal(greetingsInstance.getNameGreeted(), 'tom');
+    //     })
 
-            assert.equal(greetingsInstance.getNameGreeted(), 'anele');
-        })
-    })
+    //     it('should be able to get the name in the object of names', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('landa');
+
+    //         assert.equal(greetingsInstance.getNameGreeted(), 'landa');
+    //     })
+
+    //     it('should be able to get the name in the object of names', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('lusanda');
+
+    //         assert.equal(greetingsInstance.getNameGreeted(), 'lusanda');
+    //     })
+
+    //     it('should be able to get the name in the object of names', () => {
+    //         let greetingsInstance = greetFactory();
+    //             greetingsInstance.getName('anele');
+
+    //         assert.equal(greetingsInstance.getNameGreeted(), 'anele');
+    //     })
+    // })
 
     describe('not increment the same name again in the object', () => {
         it('should be able to increment the name value once in the object', () => {
@@ -260,7 +283,6 @@ describe('"greetFactory" is a factory function name', () => {
                 greetingsInstance.getName('tom');
                 greetingsInstance.getName('tom');
                 greetingsInstance.getName('tom');
-                greetingsInstance.getNameGreeted();
 
             assert.equal(greetingsInstance.greetCounter(), 1);
         })
@@ -269,7 +291,6 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('landa');
                 greetingsInstance.getName('landa');
-                greetingsInstance.getNameGreeted();
 
             assert.equal(greetingsInstance.greetCounter(), 1);
         })
@@ -278,7 +299,6 @@ describe('"greetFactory" is a factory function name', () => {
             let greetingsInstance = greetFactory();
                 greetingsInstance.getName('lusanda');
                 greetingsInstance.getName('lusanda');
-                greetingsInstance.getNameGreeted();
 
             assert.equal(greetingsInstance.greetCounter(), 1);
         })
