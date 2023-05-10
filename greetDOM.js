@@ -24,6 +24,7 @@ greetBtnRef.addEventListener('click', () => {
         instaOfGreetFactory.greet(radioValue);
         
         greetReferenceElement.innerHTML = instaOfGreetFactory.greetMsg();
+        greetReferenceElement.classList.add('display');
         counterGreet.innerHTML = instaOfGreetFactory.greetCounter();
     }
 
